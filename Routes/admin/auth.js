@@ -43,10 +43,11 @@ router.post("/signup", [
        // Store the id of that user inside the users cookie 
        const user =  await usersRepo.create ({ email , password  });
 
-       req.session.userID = user.id;
+       req.session.userId = user.id;
 
-        res.redirect ('/admin/products')
-});
+        res.redirect('/admin/products');
+}
+);
 
 router.get("/signout", (req,res) => {
   req.session = null;
@@ -54,7 +55,7 @@ router.get("/signout", (req,res) => {
 });
 
 router.get ("/signin", (req,res) =>{
-    res.send ()
+    res.send (signInTemplate({}));
 });
 
 router.post("/signin", [
@@ -65,8 +66,8 @@ handleErrors(signInTemplate),
 async (req,res) => { 
     const {email} = req.body;
     const user = await usersRepo.getOneBy({email});
-    req.session.userID = user.id;
-    res.redirect("/admin/products");
+    req.session.userId = user.id;
+    res.redirect('/admin/products');
     });
 
 module.exports = router;
