@@ -1,3 +1,4 @@
+//Helper Fn 
 module.exports = {
      getError (errors,prop){
         try  {

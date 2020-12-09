@@ -5,14 +5,15 @@ const router = express.Router();
 const signUpTemplate = require ('../../Views/admin/auth/signup');
 const signInTemplate = require("../../Views/admin/auth/sigin");
 const { requireEmail,requirePassword,requireConfirmation,requireEmailExists,requireValidPasswordforUser} = require("./validators");
+
 router.get ("/signup", (req,res) => {
-    
     res.send(signUpTemplate({req})); 
 });
-
+// get 
 router.get("/signin",(req,res)=>{
     res.send(signInTemplate(req)); 
 });
+//MidS
  //Middleware function  bodyParser for POST method
  /*const bodyParser = (req,res,next) => {
     if (req.method === "POST") {

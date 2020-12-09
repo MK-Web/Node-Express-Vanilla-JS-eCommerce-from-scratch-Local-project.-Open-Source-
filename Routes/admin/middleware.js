@@ -1,4 +1,5 @@
 const {validationResult} = require('express-validator');
+//Middleware fns
 
 module.exports = {
     handleErrors(templateFunc, dataCb) {
