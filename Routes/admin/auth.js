@@ -38,16 +38,16 @@ router.post("/signup", [
     requirePassword,
     requireConfirmation],
     handleErrors(signUpTemplate),
-    async (req,res) => {
-        const {email,password} = req.body;
-        // Create a user in user repo to represent this person 
-       // Store the id of that user inside the users cookie 
-       const user =  await usersRepo.create ({ email , password  });
+        async (req,res) => {
+            const {email,password} = req.body;
+            // Create a user in user repo to represent this person 
+        // Store the id of that user inside the users cookie 
+        const user =  await usersRepo.create ({ email , password  });
 
-       req.session.userId = user.id;
+        req.session.userId = user.id;
 
-        res.redirect('/admin/products');
-}
+            res.redirect('/admin/products');
+    }
 );
 
 router.get("/signout", (req,res) => {

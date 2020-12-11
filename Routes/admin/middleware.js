@@ -11,6 +11,7 @@ module.exports = {
                 let data={};
                 //First check if data callback(cb) exists
                 if(dataCb) {
+
                     //assigning valude to data variable
                    data = await dataCb(req);
                 }
@@ -19,10 +20,10 @@ module.exports = {
             next();
         };
     },
-    requireAuth(req,res,next) {
-        if(!req.session.userId){
-            return res.redirect('/signin');
+        requireAuth(req,res,next) {
+            if(!req.session.userId){
+                return res.redirect('/signin');
+            }
+            next();
         }
-        next();
-    }
 };
